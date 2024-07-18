@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import placeholder from '../../Assets/images/home-placeholder.jpeg';
+import { Button, Skeleton } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
-import { Skeleton } from '@mui/material';  // Keeping Skeleton for loading
 
+// Context to manage the global cart state
 const CartContext = React.createContext();
 
 const ItemDetails = () => {
@@ -27,8 +29,8 @@ const ItemDetails = () => {
 
   useEffect(() => {
     const fetchItemDetails = async () => {
-      const apiKey = process.env.REACT_APP_ACCESS_TOKEN;
-      const url = `${process.env.REACT_APP_BASE_URL}/api/v1/ecommerce/product/detail/${idl_product_code}/${supplier_id}`;
+      const apiKey = 'd2db2862682ea1b7618cca9b3180e04e';
+      const url = `https://tencowry-api-staging.onrender.com/api/v1/ecommerce/product/detail/${idl_product_code}/${supplier_id}`;
 
       try {
         setLoading(true);
@@ -55,8 +57,8 @@ const ItemDetails = () => {
   }, [idl_product_code, supplier_id]);
 
   const AddToCart = async () => {
-    const apiKey = process.env.REACT_APP_ACCESS_TOKEN;
-    const url = `${process.env.REACT_APP_BASE_URL}/api/v1/ecommerce/cart/record/${email}`;
+    const apiKey = 'd2db2862682ea1b7618cca9b3180e04e';
+    const url = `https://tencowry-api-staging.onrender.com/api/v1/ecommerce/cart/record/${email}`;
 
     if (!item || !item.product_variants || !item.product_variants[0]) {
       console.error('Item or product variants are missing');
@@ -102,6 +104,7 @@ const ItemDetails = () => {
       weight,
     };
 
+    // Check if the item is already in the cart
     const itemInCart = cart.find(cartItem => cartItem.product_sku === product_sku);
     if (itemInCart) {
       Swal.fire({
@@ -145,6 +148,7 @@ const ItemDetails = () => {
       });
       console.log('Item added to cart:', data);
 
+      // Update local storage and context state
       const newCart = [...cart, payload];
       setCart(newCart);
       localStorage.setItem('cart', JSON.stringify(newCart));
@@ -175,6 +179,9 @@ const ItemDetails = () => {
       setCount(count - 1);
     }
   };
+
+  console.log(item && item.product_variants[0].color );
+  console.log(item );
 
   return (
     <div className='grid lg:grid-cols-2 lg:p-12 p-4 mt-8 mb-16 gap-8'>
@@ -320,18 +327,19 @@ const ItemDetails = () => {
           </div>
         </div>
         <div className='flex items-center gap-4 w-full p-8'>
-          <button className="btn" onClick={handleDecrement} disabled={count <= 0}>-</button>
+          <Button variant="contained" color="primary" onClick={handleDecrement} disabled={count <= 0}>-</Button>
           <span>{count}</span>
-          <button className="btn" onClick={handleIncrement} disabled={item && count >= item.product_variants[0].stock_quantity}>+</button>
+          <Button variant="contained" color="primary" onClick={handleIncrement} disabled={item && count >= item.product_variants[0].stock_quantity}>+</Button>
         </div>
         <div className='flex items-center gap-4 w-full p-8'>
-          <button className="btn" onClick={AddToCart} disabled={count === 0 || loading}>Add to Cart</button>
+          <Button variant="contained" color="primary" onClick={AddToCart} disabled={count === 0 || loading}>Add to Cart</Button>
         </div>
       </div>
     </div>
   );
 };
-  
+
+// CartProvider component to wrap the application and provide cart context
 const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
