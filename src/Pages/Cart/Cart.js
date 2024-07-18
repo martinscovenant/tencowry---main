@@ -215,7 +215,7 @@ const Cart = () => {
                             <h1 className='font-semibold'>Confirm Delete</h1>
                             <FontAwesomeIcon icon={faTimes} onClick={() => setDeletedItem(null)} className='text-gray-400 cursor-pointer' />
                         </div>
-                        <p className='text-sm'>Are you sure you want to remove this item from the cart?</p>
+                        <p className='text-sm'>Are you sure you want to delete this item from the cart?</p>
                         <div className='w-full flex items-center justify-end gap-2'>
                             <div onClick={() => setDeletedItem(null)} className='border border-gray-400 rounded-md p-1 cursor-pointer'>
                                 Cancel

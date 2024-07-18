@@ -109,7 +109,7 @@ const Navbar = (props) => {
         </div>
         <form onSubmit={handleSearch} className='lg:flex items-center justify-center hidden'>
           <input value={query} onChange={handleInputChange} className='border-0 p-3 w-full bg-white text-black rounded-l-lg' type="text" placeholder='enter full word e.g women not wom' />
-          <button type='submit' className="searchBar" style={{ background: '#ff5c40', borderRadius: '0 8px 8px 0', padding: '10px' }}>
+          <button type='submit' className="searchBar" style={{ background: '#ff5c40', borderRadius: '0 8px 8px 0', padding: '12px' }}>
             <FontAwesomeIcon icon={faSearch} style={{ color: 'white' }} />
           </button>
           {loading && <p>Loading...</p>}
@@ -138,10 +138,22 @@ const Navbar = (props) => {
             <ul className={open ? `hidden` : `block`} style={{ width: '100%', position: 'absolute' }}>
               <li className="flex flex-col bg-white text-black rounded">
                 <button className='drawer-item' style={{ textAlign: 'center', width: '100%', marginTop: '6px' }}>
-                  <a href="/">Shopping</a>
+                  <a href="/">Juweris</a>
                 </button>
                 <button className='drawer-item' style={{ textAlign: 'center', width: '100%', marginTop: '6px' }}>
-                  <a href="/">Marketing</a>
+                  <a href="/">Men cloths</a>
+                </button>
+                <button className='drawer-item' style={{ textAlign: 'center', width: '100%', marginTop: '6px' }}>
+                  <a href="/">Women cloths</a>
+                </button>
+                <button className='drawer-item' style={{ textAlign: 'center', width: '100%', marginTop: '6px' }}>
+                  <a href="/">Boys cloths</a>
+                </button>
+                <button className='drawer-item' style={{ textAlign: 'center', width: '100%', marginTop: '6px' }}>
+                  <a href="/">Girls cloths</a>
+                </button>
+                <button className='drawer-item' style={{ textAlign: 'center', width: '100%', marginTop: '6px' }}>
+                  <a href="/">Electronics</a>
                 </button>
               </li>
             </ul>
