@@ -1,5 +1,5 @@
 // src/contexts/CartProvider.js
-import React, { useState, useEffect, createContext } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 
 const CartContext = createContext();
 

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
-import placeholder from "../../Assets/images/home-placeholder.jpeg";
 import { Button, Skeleton } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -117,7 +116,7 @@ const ItemDetails = () => {
         title: "Item in cart already",
         icon: "warning",
         toast: true,
-        timer: 6000,
+        timer: 1000,
         position: "top-right",
         timerProgressBar: true,
         showConfirmButton: false,
@@ -147,7 +146,7 @@ const ItemDetails = () => {
         title: "Item added to cart",
         icon: "success",
         toast: true,
-        timer: 6000,
+        timer: 1000,
         position: "top-right",
         timerProgressBar: true,
         showConfirmButton: false,

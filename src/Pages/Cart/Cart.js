@@ -58,7 +58,7 @@ const Cart = () => {
                 title: 'Item deleted from cart',
                 icon: 'success',
                 toast: true,
-                timer: 6000,
+                timer: 1000,
                 position: 'top-right',
                 timerProgressBar: true,
                 showConfirmButton: false,
